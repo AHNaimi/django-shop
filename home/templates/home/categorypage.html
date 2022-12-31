@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block body %}
+<div style="background-color:black;padding:100px;">
+<h1 style="text-align:center;color:white">{{category.cat_name}}</h1>
+  <h3 style="text-align:center;color:white">{{category.cat_description}}</h3>
+</div>
+
+{% for pro in products %}
+<div class="card" style="width: 18rem;margin:20px;display:inline-block;">
+  <img src="{{pro.pro_image.url}}" class="" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{pro.pro_name}}</h5>
+    <p class="card-text" style="color:golden;"><b>{{pro.pro_price}}</b></p>
+    <p class="card-text">remaining numbers: {{pro.pro_numb}}</p>
+    <a href="#" class="btn btn-primary">see product</a>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock%}

@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'home:homepage' %}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Register</a>
@@ -20,24 +20,22 @@
             Category
           </a>
 
-
           <!-- shoes part -->
 
-
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Shoes</a></li>
+            <li><a class="dropdown-item" href="/category/shoes">Shoes</a></li>
             <ul>
-              <li><a>men's Shoes</a></li>
-              <ul><li><a>sport shoes</a></li>
-                  <li><a>formal shoes</a></li>
+              <li><a class="dropdown-item" href="/category/men_shoes">men's Shoes</a></li>
+              <ul><li><a class="dropdown-item" href="/category/men_sport_shoes">sport shoes</a></li>
+                  <li><a class="dropdown-item" href="/category/men_formal_shoes">formal shoes</a></li>
               </ul>
 
-              <li><a>Women's Shoes</a></li>
+              <li><a class="dropdown-item" href="/category/women_shoes">Women's Shoes</a></li>
               <ul>
-                <li>sport shoes</li>
-                <li>formal shoes</li>
+                <li><a class="dropdown-item" href="/category/women_sport_shoes">sport shoes</a></li>
+                <li><a class="dropdown-item" href="/category/women_formal_shoes">formal shoes</a></li>
               </ul>
-              <li><a>Children's shoes</a></li>
+              <li><a class="dropdown-item" href="/category/children_shoes">Children's shoes</a></li>
             </ul>
 
 
@@ -47,12 +45,12 @@
 
 
 
-            <li><a class="dropdown-item" href="#">Clothes</a></li>
+            <li><a class="dropdown-item" href="/category/clothes">Clothes</a></li>
             <ul>
-              <li><a class="dropdown-item" href="#">Men's clothes</a></li>
-              <li><a class="dropdown-item" href="#">Men's pants</a></li>
-              <li><a class="dropdown-item" href="#">Women's clothes</a></li>
-              <li><a class="dropdown-item" href="#">Women's pants</a></li>
+              <li><a class="dropdown-item" href="/category/men_clothes">Men's clothes</a></li>
+              <li><a class="dropdown-item" href="/category/men_pants">Men's pants</a></li>
+              <li><a class="dropdown-item" href="/category/women_clothes">Women's clothes</a></li>
+              <li><a class="dropdown-item" href="/category/women_pants">Women's pants</a></li>
             </ul>
 
 
@@ -60,17 +58,17 @@
             <li class="dropdown-divider"></li>
 
 
-            <li><a class="dropdown-item" href="#">Watches</a></li>
+            <li><a class="dropdown-item" href="/watches/">Watches</a></li>
             <ul>
-              <li><a>men's watch</a></li>
-              <li><a>women's watch</a></li>
+              <li><a class="dropdown-item" href="/category/men_watches">men's watch</a></li>
+              <li><a class="dropdown-item" href="/category/women_watches">women's watch</a></li>
             </ul>
 
             <!-- backpack part -->
             <li class="dropdown-divider"></li>
 
 
-            <li><a class="dropdown-item" href="#">Backpacks</a></li>
+            <li><a class="dropdown-item" href="/backpacks">Backpacks</a></li>
 
           </ul>
         </li>
