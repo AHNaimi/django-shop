@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="card" style="width: 25rem;margin:15px;float:left;">
+  <img src="{{pro.pro_image.url}}" class="card-img-top" alt="...">
+</div>
+<ul class="list-group" style="margin-top:30px;margin-right:10px;flex:right;">
+  <li class="list-group-item">{{pro.pro_name}}</li>
+  <li class="list-group-item"><pre>{{pro.pro_desc}}</pre></li>
+  <li class="list-group-item">Price: {{pro.pro_price}}</li>
+  <li class="list-group-item">remaining number: {{pro.pro_numb}} pair</li>
+  <li class="list-group-item">
+  <form action="" method="post">
+    <select name="choose_size">
+      {% for t in s%}
+      <option>{{t}}</option>
+      {% endfor %}
+    </select>
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success">add to Cart</button>
+  </form>
+  </li>
+</ul>
+{% endblock %}

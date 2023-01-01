@@ -11,8 +11,8 @@
   <div class="card-body">
     <h5 class="card-title">{{pro.pro_name}}</h5>
     <p class="card-text" style="color:golden;"><b>{{pro.pro_price}}</b></p>
-    <p class="card-text">remaining numbers: {{pro.pro_numb}}</p>
-    <a href="#" class="btn btn-primary">see product</a>
+    <p class="card-text">remaining numbers: {{pro.pro_numb}} pair</p>
+    <a href="{{ pro.get_absolute_url }}" class="btn btn-primary">see product</a>
   </div>
 </div>
 {% endfor %}

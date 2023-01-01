@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class CategoryModel(models.Model):
@@ -25,6 +26,8 @@ class ProductModel(models.Model):
     pro_image = models.ImageField(upload_to='pro_image')
     pro_sizes = models.CharField(max_length=255, help_text='separate sizes with comma (,)', blank=True, null=True)
 
+    def get_absolute_url(self):
+        return reverse('home:productpage', args=(self.id, self.pro_slug))
 
 
 
