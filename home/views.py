@@ -3,6 +3,7 @@ from django.views import View
 from home.models import CategoryModel, ProductModel
 from home.forms import ProductForm
 from order.models import OrderModel
+from django.contrib import messages
 
 
 class HomeView(View):
@@ -37,5 +38,6 @@ class ProductView(View):
             pro = ProductModel.objects.get(pk=pro_id)
             new_record = OrderModel(order_size=b["choose_size"], pro_order=pro, user_order=request.user)
             new_record.save()
-        return redirect("home:homepage")
+            messages.success(request, "order add to cart successfully ")
+        return redirect(self.request.path_info)
 

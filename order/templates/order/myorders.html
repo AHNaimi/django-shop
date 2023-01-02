@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if proder %}
+{% for p,o in proder %}
+<div class="card" style="width: 18rem;margin:20px;display:inline-block;">
+  <img src="{{p.pro_image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{p.pro_name}}</h5>
+    <p class="card-text">{{p.pro_price}}</p>
+    <p class="card-text">{{o.order_size}}</p>
+    <a href="#" class="btn btn-primary">continue Buying</a>
+    <a href="#" class="btn btn-danger"> Delete</a>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+<p style="text-align:center"> your cart is empty </p>
+{% endif %}
+{% endblock %}

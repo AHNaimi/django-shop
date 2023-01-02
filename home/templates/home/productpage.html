@@ -12,7 +12,7 @@
   <form action="" method="post">
     <select name="choose_size">
       {% for t in s%}
-      <option>{{t}}</option>
+      <option>size : {{t}}</option>
       {% endfor %}
     </select>
     {% csrf_token %}
