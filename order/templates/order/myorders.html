@@ -2,14 +2,14 @@
 {% block body %}
 {% if proder %}
 {% for p,o in proder %}
-<div class="card" style="width: 18rem;margin:20px;display:inline-block;">
+<div class="card" style="width: 18rem;margin:20px;display:inline-block;" xmlns:order="http://www.w3.org/1999/xhtml">
   <img src="{{p.pro_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{p.pro_name}}</h5>
     <p class="card-text">{{p.pro_price}}</p>
     <p class="card-text">{{o.order_size}}</p>
     <a href="#" class="btn btn-primary">continue Buying</a>
-    <a href="#" class="btn btn-danger"> Delete</a>
+    <a href="{% url 'order:delorder' o.id %}"class="btn btn-danger"> Delete</a>
   </div>
 </div>
 {% endfor %}
