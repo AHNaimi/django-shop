@@ -22,9 +22,6 @@ class DelOrder(View):
     """ a class for handling delete orders"""
 
     def get(self, request, order_id):
-        print("-----------------------------------------------------")
-        print(order_id)
-        print("-----------------------------------------------------")
         pro = OrderModel.objects.get(id=order_id)
         pro.delete()
         messages.info(request, "product removed from your Cart")
