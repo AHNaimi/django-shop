@@ -8,7 +8,6 @@ from django.contrib import messages
 
 class HomeView(View):
     """ a class that show home page dynamically """
-
     def get(self, request):
         return render(request, 'home/homepage.html')
 
@@ -39,5 +38,6 @@ class ProductView(View):
             new_record = OrderModel(order_size=b["choose_size"], pro_order=pro, user_order=request.user)
             new_record.save()
             messages.success(request, "order add to cart successfully ")
-        return redirect(self.request.path_info)
+        return redirect('/order/myorders')
 
+#self.request.path_info

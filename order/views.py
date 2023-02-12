@@ -4,9 +4,11 @@ from .models import OrderModel
 from home.models import ProductModel
 from django.contrib import messages
 
+
 class MyOrdersView(View):
     """ because of this class customer can see all products
                               that already add to cart and can delete them """
+
     def get(self, request):
         user_orders = OrderModel.objects.filter(user_order=request.user).values()
         pro = []
@@ -15,9 +17,14 @@ class MyOrdersView(View):
         proder = zip(pro, user_orders)
         return render(request, "order/myorders.html", {"proder": proder})
 
+
 class DelOrder(View):
     """ a class for handling delete orders"""
+
     def get(self, request, order_id):
+        print("-----------------------------------------------------")
+        print(order_id)
+        print("-----------------------------------------------------")
         pro = OrderModel.objects.get(id=order_id)
         pro.delete()
         messages.info(request, "product removed from your Cart")

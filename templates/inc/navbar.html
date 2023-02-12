@@ -85,8 +85,8 @@
 </nav>
 {% if messages %}
   {% for msg in messages %}
-<div class="alert alert-success" role="alert">
-  product add to cart successfully
+<div class="alert alert-{{msg.tags}}" role="alert">
+{{msg}}
 </div>
 {% endfor %}
 {% endif %}
