@@ -10,12 +10,16 @@ class MyOrdersView(View):
                               that already add to cart and can delete them """
 
     def get(self, request):
-        user_orders = OrderModel.objects.filter(user_order=request.user).values()
-        pro = []
-        for x in user_orders:
-            pro.append(ProductModel.objects.get(pk=x["pro_order_id"]))
-        proder = zip(pro, user_orders)
-        return render(request, "order/myorders.html", {"proder": proder})
+        if request.user.is_authenticated:
+            user_orders = OrderModel.objects.filter(user_order=request.user).values()
+            pro = []
+            for x in user_orders:
+                pro.append(ProductModel.objects.get(pk=x["pro_order_id"]))
+            proder = zip(pro, user_orders)
+            return render(request, "order/myorders.html", {"proder": proder})
+        else:
+            messages.info(request, "you have to register in site first")
+            return redirect("accounts:register")
 
 
 class DelOrder(View):

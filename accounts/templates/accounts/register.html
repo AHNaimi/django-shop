@@ -35,11 +35,11 @@
     <label>Confirm Password</label>
     <p>{{form.password2}}</p>
   </div>
+   <div>
+    <p><a href="{% url 'accounts:login' %}"> I have account</a></p>
+  </div>
   <br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-
-
 
 {% endblock%}
