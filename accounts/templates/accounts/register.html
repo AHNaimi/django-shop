@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block body %}
-<form class="text-center" style="padding:50px;background-color:#f8f9fa;margin:50px;" novalidate action="{% url 'accounts:register' %}" method="post">
+<form class="text-center" style="padding:50px;background-color:#71d41a;margin:50px;" novalidate action="{% url 'accounts:register' %}" method="post">
   {% csrf_token %}
   <div>
     <label>first_name</label>

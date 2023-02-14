@@ -27,3 +27,8 @@ class UserForm(forms.ModelForm):
         password2 = cd.get("password2")
         if password1 and password2 and password2 != password1:
             raise ValidationError('passwords are not match')
+
+
+class UserLoginForm(forms.Form):
+    email = forms.CharField(max_length=40)
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput)

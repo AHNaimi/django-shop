@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .forms import UserForm
+from .forms import UserForm, UserLoginForm
 from .models import UserModel
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 # from django.contrib.auth import views as authen_view
 # from django.urls import reverse_lazy
 
@@ -33,6 +35,31 @@ class UserRegisterView(View):
             messages.success(request, 'you registered successfully')
             return redirect('home:homepage')
         return render(request, 'accounts/register.html', {"form": form1})
+
+
+class UserLoginView(View):
+    form_class = UserLoginForm
+    template_name = 'accounts/login.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('home:homepage')
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        form = self.form_class
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user1 = authenticate(request, username=cd['email'], password=cd['password'])
+            if user1 is not None:
+                login(request, user1)
+                messages.success(request, 'you logged in successfully')
+                return redirect('home:homepage')
+        return render(request, self.template_name, {'form': form})
 
 
 class UserLogoutView(LoginRequiredMixin, View):

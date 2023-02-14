@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="{% url 'home:homepage' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Register</a>
+          <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
@@ -75,6 +75,11 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'order:myorder' %}">Your cart</a>
         </li>
+        {%if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:logout' %}">logout</a>
+        </li>
+        {% endif %}
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form class="text-center" style="padding:50px;background-color:#f8f9fa;margin:50px;"  action="{% url 'accounts:login' %}" method="post">
+  {% csrf_token %}
+  <div>
+    <label>Email</label>
+    <p>{{form.email}}</p>
+  </div>
+  <div>
+    <label>Password</label>
+    <p>{{form.password}}</p>
+  </div>
+    <br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock%}
