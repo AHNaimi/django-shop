@@ -12,11 +12,15 @@ class MyOrdersView(View):
     def get(self, request):
         if request.user.is_authenticated:
             user_orders = OrderModel.objects.filter(user_order=request.user).values()
+            all_pay = 0
             pro = []
             for x in user_orders:
+                s = ProductModel.objects.get(pk=x['pro_order_id'])
+                r = s.pro_price
+                all_pay += int(r)
                 pro.append(ProductModel.objects.get(pk=x["pro_order_id"]))
             proder = zip(pro, user_orders)
-            return render(request, "order/myorders.html", {"proder": proder})
+            return render(request, "order/myorders.html", {"proder": proder, "all_pay": all_pay})
         else:
             messages.info(request, "you have to register in site first")
             return redirect("accounts:register")

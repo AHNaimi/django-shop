@@ -6,14 +6,18 @@
   <img src="{{p.pro_image.url}}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{p.pro_name}}</h5>
-    <p class="card-text">{{p.pro_price}}</p>
+    <p class="card-text">{{p.pro_price}}$</p>
     <p class="card-text">{{o.order_size}}</p>
-    <a href="#" class="btn btn-primary">continue Buying</a>
+
     <a href="{% url 'order:delorder' o.id %}"class="btn btn-danger"> Delete</a>
   </div>
 </div>
 {% endfor %}
+<div style="background-color:green;text-align:right;padding:20px;">
+<a href="#" class="btn btn-success" style="padding:10px;margin-right:20px;">Buy</a>
+<a href="#" class="btn btn-primary" style="padding:10px;margin-right:20px;">Cost of all products : {{all_pay}}$</a>
+</div>
 {% else %}
-<p style="text-align:center"> your cart is empty </p>
+<p style="text-align:center"> your order cart is empty </p>
 {% endif %}
 {% endblock %}
