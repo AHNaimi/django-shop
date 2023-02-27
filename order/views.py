@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from .models import OrderModel
+from .models import OrderModel, Paymodel
 from home.models import ProductModel
 from django.contrib import messages
 
@@ -25,6 +25,15 @@ class MyOrdersView(View):
             messages.info(request, "you have to register in site first")
             return redirect("accounts:register")
 
+    def post(self, request):
+        user_orders = OrderModel.objects.filter(user_order=request.user).values()
+        user_orm = OrderModel.objects.filter(user_order=request.user)
+        for x in user_orm:
+            new_record = Paymodel(pro_paid=x)
+            new_record.save()
+            x.delete()
+        return redirect("order:myorder")
+
 
 class DelOrder(View):
     """ a class for handling delete orders"""
@@ -34,3 +43,6 @@ class DelOrder(View):
         pro.delete()
         messages.info(request, "product removed from your Cart")
         return redirect('order:myorder')
+
+
+

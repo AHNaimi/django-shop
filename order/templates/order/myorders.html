@@ -14,10 +14,19 @@
 </div>
 {% endfor %}
 <div style="background-color:green;text-align:right;padding:20px;">
-<a href="#" class="btn btn-success" style="padding:10px;margin-right:20px;">Buy</a>
+  <form action="" method="post">
+    {% csrf_token %}
+    <button class="btn btn-success" style="padding:10px;margin-right:20px;">Buy</button>
+  </form>
 <a href="#" class="btn btn-primary" style="padding:10px;margin-right:20px;">Cost of all products : {{all_pay}}$</a>
 </div>
 {% else %}
 <p style="text-align:center"> your order cart is empty </p>
 {% endif %}
+
+
+<br>
+<hr>
+<br>
+<h3>products that you paid and are in way to you</h3>
 {% endblock %}
