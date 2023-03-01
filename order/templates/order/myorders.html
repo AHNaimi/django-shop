@@ -29,4 +29,14 @@
 <hr>
 <br>
 <h3>products that you paid and are in way to you</h3>
+{% if paid_pro%}
+{% for x in paid_pro %}
+<div class="card" style="width: 18rem;margin:20px;display:inline-block;" xmlns:order="http://www.w3.org/1999/xhtml">
+  <div class="card-body">
+    <h5 class="card-title">{{x.pro_orders}}</h5>
+    <p class="card-text">{{x.order_sizes}}$</p>
+  </div>
+</div>
+{% endfor %}
+{% endif%}
 {% endblock %}

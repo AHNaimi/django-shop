@@ -12,4 +12,6 @@ class OrderModel(models.Model):
 
 class Paymodel(models.Model):
     """when a client pay money for buy product"""
-    pro_paid = models.ForeignKey(OrderModel, on_delete=models.CASCADE, related_name="pro_paid")
+    pro_orders = models.ForeignKey(ProductModel, on_delete=models.CASCADE, related_name="order_proo")
+    order_sizes = models.CharField(max_length=50, blank=True, null=True)
+    user_orders = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name="order_userr")
